@@ -1,0 +1,40 @@
+public class SimpleDiceNotation{
+  private int x; // number of dice
+  private int n; // number of sides
+  
+  public SimpleDiceNotation(){
+   this.x=1;
+   this.n=6;
+  }
+  
+  public SimpleDiceNotation(String str){
+    int i=str.indextOf("D");
+    String xstr=str.substring(0,i);
+    String nstr=str.substring(i+1);
+    this.x=Integer.parseInt(xstr);
+    this.n=Integer.parseInt(nstr);
+  }
+  
+  public SimpleDiceNotation(SimpleDiceNotation sdn){
+    this.x=sdn.x;
+    this.y=sdn.y;
+  }
+  
+  public int roll(){
+    int sum=0;
+    for(int i=1; i<=this.x; i++){
+      int r = (int) (Math.random*6)+1;
+      sum+=r;
+    }
+    return sum;
+   }
+   
+  public String toString(){
+    return this.x+"D"+this.n;
+  }
+  
+  public boolean equals(){
+    if(this.x==this.n) return true;
+    return false;
+  }
+}
