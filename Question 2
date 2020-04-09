@@ -1,0 +1,29 @@
+private  void parse(String myDice){
+  while(myDice.length()>0){
+    if(!myDice.contains("+)){ //no more "+" means only 1'element' left, either a sdn or an int
+      if(myDice.contains("D"){
+        SimpleDiceNotion sdn = new SimpleDiceNotion(myDice);
+        sdnList.add(sdn);
+      }
+      else mod=Integer.parseInt(myDice);
+    }
+    else{ //not the last 'element' --> must be a sdn
+      int i=myDice.indexOf("+");
+      String str = myDice.substring(0,i);
+      SimpleDiceNotion sdn = new SimpleDiceNotion(str);
+      sdnList.add(sdn);
+      myDice=myDice.substring(i+1);
+    }
+  }
+}
+
+public int roll(){
+  int sum=0;
+  for(int i=0; i<sdnList.size(); i++){
+    simpleDiceNotion sdn = sdnList.get(i);
+    int r = sdn.roll;
+    sum+=r;
+  }
+  return sum;
+}
+  
