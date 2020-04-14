@@ -23,7 +23,7 @@ public class SimpleDiceNotation{
   public int roll(){
     int sum=0;
     for(int i=1; i<=this.x; i++){
-      int r = (int) (Math.random*6)+1;
+      int r = (int) (Math.random()*this.n + 1);
       sum+=r;
     }
     return sum;
