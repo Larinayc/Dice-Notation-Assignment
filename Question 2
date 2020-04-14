@@ -1,34 +1,30 @@
-private  void parse(String myDice){
+private void parse(String myDice){
+  this.mod=0;
   while(myDice.length()>0){
     if(!myDice.contains("+)){ //no more "+" means only 1'element' left, either a sdn or an int
       if(myDice.contains("D"){
         SimpleDiceNotion sdn = new SimpleDiceNotion(myDice);
-        sdnList.add(sdn);
+        this.sdnList.add(sdn);
       }
-      else mod=Integer.parseInt(myDice);
+      else this.mod=Integer.parseInt(myDice);
     }
     else{ //not the last 'element' --> must be a sdn
       int i=myDice.indexOf("+");
       String str = myDice.substring(0,i);
       SimpleDiceNotion sdn = new SimpleDiceNotion(str);
-      sdnList.add(sdn);
+      this.sdnList.add(sdn);
       myDice=myDice.substring(i+1);
     }
   }
 }
 
 public int roll(){
-  int sum=0;
+  int sum=mod;
   for(int i=0; i<sdnList.size(); i++){
     simpleDiceNotion sdn = sdnList.get(i);
-    for(int i=1; i<=this.x; i++){
-      int r = (int) (Math.random()*this.n + 1);
-      sum+=r;
-     }
-    int r = sdn.roll();
+    int r = sdn.roll();  // would the fact that there are 2 roll() methods create a problem?
     sum+=r;
   }
-  sum+=mod;
   return sum;
 }
   
