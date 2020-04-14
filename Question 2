@@ -7,8 +7,10 @@ private void parse(String myDice){
         this.sdnList.add(sdn);
         break;
       }
-      else this.mod=Integer.parseInt(myDice);
+      else{
+        this.mod=Integer.parseInt(myDice);
         break;
+      }
     }
     else{ //not the last 'element' --> must be a sdn
       int i=myDice.indexOf("+");
